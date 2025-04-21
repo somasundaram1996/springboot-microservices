@@ -1,0 +1,44 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        opaque-token:
+          introspection-uri: http://localhost:8080/realms/microservices-claim/protocol/openid-connect/token/introspect
+          client-id: a6e35f97-03c2-4d79-b177-f331fc7963b3
+          client-secret: abYpqJBKwmfRKJ5N3QoCTA5UPGKYrK2D
+      client:
+        provider:
+          jwt:
+            token-uri: http://localhost:8080/realms/microservices-claim/protocol/openid-connect/token
+        registration:
+          jwt:
+            client-id: 52570107-8aa0-46b4-bf84-7bf83b3796a3
+            client-secret: JAcizne9UyFxAMpNc9uCMYFOjFcHfTI8
+            authorization-grant-type: client_credentials
+  application:
+    name: ORDER_SERVICE
+  datasource:
+    url: jdbc:h2:file:C:\Users\somav\Downloads\Microservices\DB\orderservice\order
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+server:
+  port: 8081
+gateway:
+  url: http://localhost:9000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+    endpoint:
+      health:
+        show-details: always

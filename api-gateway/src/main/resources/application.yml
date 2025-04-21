@@ -1,0 +1,17 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        opaque-token:
+          introspection-uri: http://localhost:8080/realms/microservices-claim/protocol/openid-connect/token/introspect
+          client-id: a6e35f97-03c2-4d79-b177-f331fc7963b3
+          client-secret: abYpqJBKwmfRKJ5N3QoCTA5UPGKYrK2D
+routeConfig:
+  inventory:
+    url: http://localhost:8082
+  order:
+    url: http://localhost:8081
+  product:
+    url: http://localhost:8090
+server:
+  port: 9000
