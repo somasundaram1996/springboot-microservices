@@ -4,6 +4,7 @@ import com.somavk.microservices.webclient.service.WebClientService;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
+import io.opentelemetry.api.trace.Tracer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,6 +25,8 @@ import reactor.netty.resources.ConnectionProvider;
 public class WebClientConfig {
     @Value("${gateway.url}")
     private String gatewayHost;
+    @Autowired
+    private Tracer tracer;
 
     @Bean
     public WebClient webClient(@Autowired @Qualifier("gjwtRepository") ReactiveClientRegistrationRepository reactiveClientRegistrationRepository) {

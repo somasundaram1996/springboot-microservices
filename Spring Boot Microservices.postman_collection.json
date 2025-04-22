@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "e0692cfe-a9c0-4e9b-9e74-6ccffd41ef7d",
+		"name": "Spring Boot Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10585741"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Iphone 15\",\r\n    \"description\":  \"Iphone 15 is a Smart Phone from Apple\",\r\n    \"price\": 750000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{productHost}}/api/v1/products",
+							"host": [
+								"{{productHost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{productHost}}/api/v1/products",
+							"host": [
+								"{{productHost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"skuCode\": \"iphone_15\",\r\n    \"price\": 75000,\r\n    \"quantity\": 2001\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{orderHost}}/api/v1/orders",
+							"host": [
+								"{{orderHost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"skuCode\": \"iphone_15\",\r\n    \"price\": 75000,\r\n    \"quantity\": 101\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{orderHost}}/api/v1/orders",
+							"host": [
+								"{{orderHost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "Create Inventory",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n    \"skuCode\": \"iphone_15\",\r\n    \"quantity\": 100\r\n    },\r\n    {\r\n    \"skuCode\": \"pixel_8\",\r\n    \"quantity\": 100\r\n    },\r\n    {\r\n    \"skuCode\": \"oneplus_12\",\r\n    \"quantity\": 100\r\n    },\r\n    {\r\n    \"skuCode\": \"galaxy_24\",\r\n    \"quantity\": 100\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryhost}}/api/v1/inventories",
+							"host": [
+								"{{inventoryhost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"inventories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Inventory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inventoryhost}}/api/v1/inventories",
+							"host": [
+								"{{inventoryhost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"inventories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Inventory By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inventoryhost}}/api/v1/inventories/iphone_15",
+							"host": [
+								"{{inventoryhost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"inventories",
+								"iphone_15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Inventory",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{inventoryhost}}/api/v1/inventories/iphone_15?quantity=200",
+							"host": [
+								"{{inventoryhost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"inventories",
+								"iphone_15"
+							],
+							"query": [
+								{
+									"key": "quantity",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Inventory Sotck",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inventoryhost}}/api/v1/inventories/iphone_15/availability?quantity=200",
+							"host": [
+								"{{inventoryhost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"inventories",
+								"iphone_15",
+								"availability"
+							],
+							"query": [
+								{
+									"key": "quantity",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gateway",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gatewayhost}}/api/v1/products",
+							"host": [
+								"{{gatewayhost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gatewayhost}}/api/v1/orders",
+							"host": [
+								"{{gatewayhost}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Inventories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/inventories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"inventories"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:8082/api/v1/inventories'"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Availability",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Inventory By SkuCode",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Keyclock",
+			"item": [
+				{
+					"name": "Token",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
